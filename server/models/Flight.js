@@ -55,12 +55,20 @@ const FlightSchema = new Schema(
             min:0,
             max:60
         },
+        departureDate:{
+            type:String,
+            required: true,
+        },
         departureTime:{
-            type: Date,
+            type:String,
+            required: true,
+        },
+        arrivalDate:{
+            type: String,
             required: true,
         },
         arrivalTime:{
-            type: Date,
+            type: String,
             required: true,
         },
         duration:{

@@ -31,3 +31,27 @@ export const getflight= async (req, res, next) => {
       next(err);
     }
   };
+export const getdatedetails= async (req, res, next) => {
+    try {
+      const datedetails = await Flight.find({departureDate:req.params.departureDate});
+      res.status(200).json(datedetails);
+    } catch (err) {
+      next(err);
+    }
+  };
+export const gettimedetails= async (req, res, next) => {
+    try {
+      const timedetails = await Flight.find({departureTime:req.params.departureTime});
+      res.status(200).json(timedetails);
+    } catch (err) {
+      next(err);
+    }
+  };
+export const getflights = async (req, res, next) => {
+    try {
+      const timedetails = await Flight.find();
+      res.status(200).json(timedetails);
+    } catch (err) {
+      next(err);
+    }
+  };
