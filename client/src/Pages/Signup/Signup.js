@@ -50,7 +50,7 @@ function Signup() {
     if (password !== confirmPassword) setPasswordMismatch(true);
     else {
       // post method
-      const response = await fetch("http://localhost:4000/api/auth/register", {
+      const response = await fetch("https://lemon-cygnet-fez.cyclic.app/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

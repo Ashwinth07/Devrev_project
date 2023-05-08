@@ -1,10 +1,12 @@
 import express from "express";
-import { addbooking,getbooking } from "../controller/booking.js";
+import { Mangedetails, addbooking,getbook,getbooking } from "../controller/booking.js";
 
 const router = express.Router();
 
 router.post("/add",addbooking);
+router.get("/getbook",getbook);
 router.get("/get",getbooking);
+router.get("/searchbookings",Mangedetails);
 
 
 

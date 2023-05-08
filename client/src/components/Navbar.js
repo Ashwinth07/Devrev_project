@@ -22,14 +22,15 @@ export default function Navbars() {
     <div>
     <Navbar  expand="lg" className='m-2' variant='dark' style={{backgroundColor:"#012a4a"}}>
       <Container fluid>
+        <img src="https://media.istockphoto.com/id/518566441/photo/airplane-icon.jpg?b=1&s=170667a&w=0&k=20&c=GaEgLnmnUk9DU5mzXIouJYl4FDC3MkMvqEZnux-Ik0s=" alt="img" style={{width:"20px",height:"20px",marginRight:"10px"}}/>
         {localStorage.getItem("admin")=="true" && (
-        <Navbar.Brand href="#">Admin</Navbar.Brand>
+        <Navbar.Brand href="#" style={{fontWeight:"800px"}}>Admin</Navbar.Brand>
         )}
         {localStorage.getItem("admin")=="false" && (
-        <Navbar.Brand href="#">Booking</Navbar.Brand>
+        <Navbar.Brand href="#"  style={{fontWeight:"800px"}}>Booking</Navbar.Brand>
         )}
         {!localStorage.getItem("admin")=="false" && !localStorage.getItem("admin")=="true" &&(
-        <Navbar.Brand href="#">Flight booking Booking</Navbar.Brand>
+        <Navbar.Brand href="#"  style={{fontWeight:"500px"}}>Fligh Booking</Navbar.Brand>
         )}
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -48,6 +49,11 @@ export default function Navbars() {
               {localStorage.getItem("admin")=="true" && (
               <NavDropdown.Item href="/addflight">
                Add flight
+              </NavDropdown.Item>
+               )}
+              {localStorage.getItem("admin")=="true" && (
+              <NavDropdown.Item href="/flightmanage">
+               Flight Manage
               </NavDropdown.Item>
                )}
             </NavDropdown>
@@ -72,12 +78,17 @@ export default function Navbars() {
                       to="/"
                       role="button"
                       data-bs-toggle="dropdown"
-                      style={{color:"#eee",border:"2px solid #eee",padding:"3px",width:"100px",marginRight:"50px"}}
+                      style={{color:"#eee",border:"2px solid #eee",padding:"3px",width:"120px",marginRight:"50px",textAlign:"center"}}
 
                     >
                      Hi {localStorage.getItem("username")}
                     </Link>
                     <ul class="dropdown-menu">
+                      <li>
+                        <Link class="dropdown-item" to="/profile">
+                          Profile
+                        </Link>
+                      </li>
                       <li>
                         <Link class="dropdown-item" onClick={logoutuser}>
                           Logout

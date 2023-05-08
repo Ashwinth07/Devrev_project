@@ -44,7 +44,7 @@ function Addflight() {
       price,
     };
 
-    axios.post('http://localhost:4000/api/flight/add', newBooking)
+    axios.post('https://lemon-cygnet-fez.cyclic.app/api/flight/add', newBooking)
       .then((res) => {
         alert("successfully added");
         console.log(res.data);

@@ -10,6 +10,10 @@ import Bookingpage from './Pages/Bookingpage/Bookingpage';
 import Flight from './Pages/flight/Flight.js';
 import Addflight from './Pages/AddFlight/Addflight';
 import Aboutus from './Pages/Aboutus';
+import Profile from './Pages/Profile';
+import Bookchild from './Pages/Bookchild';
+import Footer from './Pages/Footer/Footer';
+import FlightMange from './Pages/FlightMange';
 
 
 
@@ -26,8 +30,14 @@ function Allroutes() {
             <Route path="/viewflight" element={<Flight/>} />
             <Route path="/addflight" element={<Addflight/>} />
             <Route path="/aboutus" element={<Aboutus/>} />
+            <Route path="/profile" element={<Profile/>} />
+            <Route path="/bookchild" element={<Bookchild/>} />
+            <Route path="/flightmanage" element={<FlightMange/>} />
+        
         </Routes>
         </Authentication>
+        <br></br>
+        <Footer></Footer>
     </div>
   )
 }

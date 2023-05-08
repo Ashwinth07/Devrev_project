@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Navbars from '../../components/Navbar';
+import axios from 'axios';
 const Bookingpage = () => {
     const location = useLocation();
     const myValue = location.state?.myValue;
@@ -10,12 +11,19 @@ const Bookingpage = () => {
   const [userId, setUserId] = useState('');
   const [flightId, setFlightId] = useState('');
   const [totalSeat, setTotalSeat] = useState('');
+  const[List, setList] = useState([])
   const [passengerDetails, setPassengerDetails] = useState([]);
   const [flightDetails, setFlightDetails] = useState({
     flightNumber: '',
     airline: '',
   });
   const [totalFare, setTotalFare] = useState('');
+  useEffect(() => {
+    axios.get('https://lemon-cygnet-fez.cyclic.app/api/flight/getflig')
+    .then((response) => {setList(response.data)})
+    .catch((error) => console.log(error))    
+},[]
+)
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -76,7 +84,7 @@ const Bookingpage = () => {
         total_fare:parseInt(formData.totalFare)
 
     }))
-    const response = await fetch("http://localhost:4000/api/book/add", {
+    const response = await fetch("https://lemon-cygnet-fez.cyclic.app/api/book/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -101,7 +109,7 @@ const Bookingpage = () => {
   };
 
   return (
-    <div>
+    <div  style={{minHeight:"90vh"}}>
      <Navbars></Navbars>
     <Form onSubmit={handleSubmit} className='col-9 m-5' style={{paddingLeft:"200px"}}>
       <Row>
@@ -128,13 +136,29 @@ const Bookingpage = () => {
         <Col>
           <Form.Group controlId="flightNumber">
             <Form.Label>Flight Number:</Form.Label>
-            <Form.Control type="text" name="flightNumber" value={flightDetails.flightNumber} onChange={handleInputChange} />
+            <select className="form-select"  name="flightNumber" value={flightDetails.flightNumber} onChange={handleInputChange}>
+                <option value="">Refer FlightId fill below</option>
+                {List.map((category, index) => (
+                  <option  name="flightNumber" value={category.flightNumber}>
+                    {category.flightNumber}
+                  </option>
+                ))}
+          </select>
+            <Form.Control className="mt-2" placeholder='Enter Flightnumber' type="text" name="flightNumber" value={flightDetails.flightNumber} onChange={handleInputChange} />
           </Form.Group>
         </Col>
         <Col>
           <Form.Group controlId="airline">
             <Form.Label>Airline:</Form.Label>
-            <Form.Control type="text"   name="airline" value={flightDetails.airline} onChange={handleInputChange} />
+            <select className="form-select"  onChange={handleInputChange}>
+                <option value="">Refer Airline fill below</option>
+                {List.map((category, index) => (
+                  <option  name="flightNumber" value={flightDetails.airline}>
+                    {category.airlineName}
+                  </option>
+                ))}
+          </select>
+            <Form.Control placeholder='Enter Airline'  className="mt-2" type="text"   name="airline" value={flightDetails.airline} onChange={handleInputChange} />
       </Form.Group>
     </Col>
     <Col>
