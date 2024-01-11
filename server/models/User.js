@@ -3,24 +3,25 @@ const { Schema } = mongoose;
 
 const UserSchema = new Schema(
   {
-    username: {
+    employeeId: {
       type: String,
       required: true,
       unique: true,
     },
-    image: {
+    name: {
       type: String,
+      required: true,
     },
     email: {
       type: String,
       required: true,
       unique: true,
     },
-    newpassword: {
+    password: {
       type: String,
       required: true,
     },
-    confirmpassword: {
+    confirmpassword:{
       type: String,
       required: true,
     },
@@ -31,6 +32,22 @@ const UserSchema = new Schema(
     isAdmin: {
       type: Boolean,
       default: false,
+    },
+    dailyFoodCount: {
+      type: Number,
+      default: 0,
+    },
+    costallocated:{
+      type: Number,
+      default: 0,
+    },
+    lastDailyUpdate: {
+      type: Date,
+      default: function() {
+        const today = new Date();
+        today.setDate(today.getDate() - 1);
+        return today;
+      },
     },
   },
   { timestamps: true }

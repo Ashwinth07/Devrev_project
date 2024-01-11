@@ -1,31 +1,26 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import Navbars from '../components/Navbar';
 
 function Aboutus() {
-    
-  const [content, setContent] = useState({
-    heading: "About Our Page",
-    imagePath: "https://example.com/about-image.jpg",
-    introduction: "Welcome to our flight booking website. We are a team of experienced professionals dedicated to providing our customers with the best travel experience.",
-    details: "Our website offers a wide range of flight options, from budget to luxury, to destinations all around the world. Our team of travel experts is available 24/7 to assist you with any queries or concerns you may have."
-  });
+  const introduction =
+    'Welcome to our automated lunch reservation platform. Our website simplifies the lunch reservation process for employees within our workplace during specific time slots.';
+
+  const details =
+    'Our platform allows employees to reserve their lunch within designated time frames. While we currently focus on providing a streamlined reservation system, we aim to offer a variety of meal choices in the future. With our automated system, we ensure a hassle-free and efficient lunch reservation experience for everyone in our workplace.';
 
   return (
-    <div style={{minHeight:"90vh"}}>
-        <Navbars></Navbars>
-        <Container className='d-flex justify-content-center m-3'>
-            <div>
-          <h1>{content.heading}</h1>
-            <Image src={content.imagePath} fluid />
-
-            <h2>{content.introduction}</h2>
-            <p>{content.details}</p>
-
-        </div>
-        </Container>
-
-
+    <div style={{ minHeight: '90vh' }}>
+      <Navbars />
+      <Container className='my-3'>
+        <Row className='justify-content-center'>
+          <Col md={8}>
+            <h1>About Our Lunch Reservation Platform</h1>
+            <p>{introduction}</p>
+            <p>{details}</p>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

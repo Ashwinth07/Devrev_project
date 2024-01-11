@@ -3,10 +3,8 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import authRoute from "./routes/authRoute.js";
-import flightRoute from "./routes/flightRoute.js";
-import bookingRoute from "./routes/bookingRoute.js";
-// import { sendMailUsingNodemailer } from "./node mailer/nodemailer.js";
-
+import MonthRoute from "./routes/Monthly_route.js"
+import axios from "axios";
 dotenv.config();
 const app = express();
 mongoose.set("strictQuery", false);
@@ -18,7 +16,6 @@ const connect = async () => {
     throw error;
   }
 };
-
 const corsOpts = {
   origin: "*",
   methods: ["GET", "POST", "DELETE", "PUT"],
@@ -30,9 +27,17 @@ mongoose.connection.on("disconnected", () => {
 });
 app.use(express.json());
 app.use("/api/auth", authRoute);
-app.use("/api/flight",flightRoute);
-app.use("/api/book",bookingRoute);
-// app.post("/sendMail", sendMailUsingNodemailer);
+app.use("/api/month",MonthRoute);
+
+// const checkDay = async () => {
+//   try {
+//     const apiUrl = 'http://localhost:4000/api/month/bulk-upload';
+//     const response = await axios.post(apiUrl);
+//     console.log('Response:', response.data);
+//   } catch (error) {
+//     console.error('Error:', error.message);
+//   }
+// };
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;

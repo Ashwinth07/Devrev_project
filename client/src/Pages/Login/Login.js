@@ -24,19 +24,19 @@ function Login() {
   
     const submit = async (e) => {
       e.preventDefault();
-      const response = await fetch("https://lemon-cygnet-fez.cyclic.app/api/auth/login", {
+      const response = await fetch("http://localhost:4000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: email,
-          newpassword: password,
+          password: password,
         }),
       });
       const json = await response.json();
-      console.log(json);
       if (json.status === "Success") {
-        auth.login(json.data[0].username);
-        localStorage.setItem("username", json.data[0].username);
+        // auth.login(json.data.username);
+        console.log(json)
+        localStorage.setItem("username", json.data[0].name);
         localStorage.setItem("id", json.data[0]._id);
         localStorage.setItem("admin", json.data[0].isAdmin);
         navigate(location.state ? location.state.path : "/", { replace: true });

@@ -1,29 +1,116 @@
-.flight-container{
-    background-color:#eee;
-    /* height: 120px; */
-    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+/* Home.css */
+
+.hero {
+  position: absolute;
+  bottom: 25%;
+  left: 15%;
 }
-.depature{
-    background-color: #fff;
-    border: none;
-    color: #000;
-    font-size: 16px;
-    padding: 50px;
-    cursor: pointer;
-    width: 30%;
-    border-radius: 16px;
-    margin: 20px;
+
+.hero h1 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  margin-right: 250px;
 }
-.img-container{
-    width: 60%;
-    background-size: cover;
-    margin-top: 65px;
-    /* height:100%; */
-    margin-left: 100px;
-    /* border-radius: 16px; */
-    position: absolute;
-    top:100;
-    right: 200px;
-    margin-left: 200px;
-    border-radius: 24px;
+
+.hero p {
+  color: #eeee;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 0rem 0 2rem 0;
+  text-shadow: 2px 2px 4px #000000;
+  margin-right: 200px;
+}
+
+.hero a {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #222;
+  width: 150px;
+  padding: 9px;
+  margin-left: 414px;
+}
+
+.home-heading {
+  margin: 2rem;
+  padding: 3rem;
+}
+
+.home-details {
+  margin: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hero {
+    position: static;
+    text-align: center;
+    bottom: initial;
+    left: initial;
+  }
+
+  .hero h1 {
+    margin-right: 0;
+    font-size: 2rem;
+  }
+
+  .hero p {
+    margin-right: 0;
+    font-size: 1rem;
+  }
+
+  .hero a {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home-heading {
+    margin: 1rem;
+    padding: 2rem;
+  }
+
+  .home-details {
+    margin: 10px;
+  }
+}
+
+.img-container {
+  position: relative;
+  width: 99%;
+  height: 98vh;
+  overflow: hidden;
+  margin-left: 6px;
+}
+
+.img-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+  .img-container {
+    display: none;
+  }
+  .hero h1,
+  .hero p,
+  .hero a {
+    color:grey;
+    text-shadow: 2px 2px 4px white;
+  }
+}
+@media (max-width: 768px) {
+  .btn-primary {
+    width: 100%;
+    margin: 10px 0;
+  }
 }
